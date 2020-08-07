@@ -1,130 +1,119 @@
 // IIFE -Immediately Ivoked Function Expression
-/*    JavaScript 
-      Assignment 2
-      Mini Portfolio
-      Author: Shankar Sigdel
-      Date:   2020-07-01
+/*    
+----JavaScript --------
+Shankar Sigdel
+Assignment 3 Extended mini Portofolio
+student ID: 301110925
+Client Side Web
+Professor: Tom Tsiliopoulos
 */
+
 "use strict";
 
-// IIFE -Immediately Ivoked Function Expression
-(function(){
-    
-    let title = document.title.toLowerCase();
-
-    function highlightActiveLink() 
+displayOutput();
+function displayOutput()
+{
+    console.log('%cCOMP125-Assignment3', "color:ivory; background-color:purple ;font-size: 24px;");   
+    let title = document.title;
+    title = title.toLowerCase();
+    console.log(`The title of the page is ${title}`);
+}
+ //This is for nav..header and footer
+    function setNavData()
+{
+     if (document.title == "home.html" || 
+     document.title == "contact.html" || 
+     document.title == "project.html") 
     {
-        //console.log(`The title of the page is ${title}`);
+    loadHeader();
+    loadFooter();      
+    }                        
+}  
+    let xhrContent;
 
-        let navAnchors = document.querySelectorAll("li a");
-
-        for (const anchor of navAnchors) 
+    //Reads the content from JSON 
+    function readParagraphs() 
+{
+    if ((xhrContent.readyState === 4) && (xhrContent.status === 200)) 
+      {
+    let MyContent = JSON.parse(xhrContent.responseText);
+    let paragraphs = MyContent.paragraphs;
+    paragraphs.forEach(function (paragraph) 
         {
-
-            let anchorString = anchor.getAttribute("href");
-            anchorString = anchorString.substr(0, anchorString.length - 5);
-
-            if ((title === "home") && (anchorString === "index") || (title === anchorString)) 
-            {
-                anchor.className = "nav-link active";
-            }
-        }
-
-        return title;
-    }
-
-    function addParagraphsToJumbotron() 
-    {
-        // step 1 hook into the spot (element) on the page
-        let jumbotron = document.getElementsByClassName("jumbotron")[0];
-
-        if (jumbotron) 
-        {
-            // step 2 create a new element
-            let firstDiv = document.createElement("div");
-            let firstParagraph = document.createElement("p");
-            let secondParagraph = document.createElement("p");
-            let thirdParagraph = document.createElement("p");
-            let fourthParagraph = document.createElement("p");
-
-            // step 3 configure the new element
-            
-            switch (title) {
-                case "index":
-                    firstDiv.innerHTML =
-                `    
-                <p align="center">
-                    <img width="200" height="230"src="./images/shankar.jpg">
-                </p>            
-                <palign="right">
-                    <h2 text-align="center" background-color= blue; > INTRODUCTION</h2>
-                </p>
-                <p>
-                My Name is SHANKAR SIGDEL, Student ID is 301110925, The Course Code is COMP125-004. I Live in Scarborough, Ontario. I am a student of Centennial College, Software Engineering Technology, Second Semester. Software Engineering Technology is my second career of my education. My aim after the completion of this subject is to be established in the same field. I am entertaining this subject and professor as well. Some code references for this project are taken from class lectures of Prof. Tom .IT is really an interesting field to work in. I am expecting to entertain in this field in the future.
-                </p>
-                <p>
-                <h2> MISSION STATEMENT</h2> Gain Knowledge on Technology and Work as A Leading Professinal with Sound Knowledge so that i can bring Change and Work with Innovative Ideas of Technology in the Work Place.
-                </p>
+        let paragraphElements = document.getElementById(paragraph.id);
                 
-                `;
-                    break;
-                case "project":
-                    firstDiv.innerHTML =
-                    `                
-                    <p align="left">
-                    This picture shows the pictures of the project that i have completed at Cencol.
-                    <img src="./images/project1.png">
-                    </p>
-                    <p align="left">
-                    This Project is about a Registration Form that i have completed in the guidence of professor at Cencol</p>
-                    <img src="./images/project2.png">
-                    </p>
-                    <p align="left">
-                    This Project is a big project that i have completed as an assignment at Cencol
-                        <img src="./images/project3.png">
-                    </p>
-                                        
-                    `;
-                        break;
-                default:
-                    break;
-            }           
-            
-            // step 4 attach the new element
-            jumbotron.appendChild(firstDiv);
-
-            // back to step 2 - create a new element
-            let newDiv = document.createElement("div");
-
-            // step 3 - configure    
-
-            // step 4 attach the new element
-            jumbotron.appendChild(newDiv);
-            return true;
-        }
-        return false;
+        if(paragraphElements) 
+        {
+             paragraphElements.innerHTML = paragraph.content;
+        }               
+        }, this);
     }
-  
-    // named function
-    function Start()
+}
+    loadHeader();
+    function loadHeader()
+{
+  console.info("Header is loading...");
+  // step 1 - Creates the XHR object
+  let XHR = new XMLHttpRequest();
+
+  // step 2 - Configures the message
+  XHR.open("GET", "./Views/partials/header.html");
+
+  // step 3 - Executes the request
+  XHR.send();
+
+  XHR.addEventListener("readystatechange", function()
+  {
+      if((XHR.readyState === 4) && (XHR.status === 200))
+      {
+          let header = document.getElementsByTagName("header")[0];
+
+          let headerData = XHR.responseText;
+
+          header.innerHTML = headerData;
+      }
+  });   
+}
+//it loads the file from paragraph.json
+function loadContent()
     {
-       console.log('%cApp Started...', "color:white; font-size: 24px;");   
+      xhrContent = new XMLHttpRequest();
+      xhrContent.open("GET","Scripts/paragraphs.json",true);
+      xhrContent.send(null);
+      xhrContent.addEventListener("readystatechange",readParagraphs);
+    }
+function initialize() 
+    { 
+     //Calling loadContent function 
+        loadContent();
+    };
+     //Loads the initialize function after loading all the html functions 
+    window.addEventListener("load",initialize);
 
-       let title = highlightActiveLink();
+    //Footer Part
+    loadFooter();
+    function loadFooter()
+    {
+    console.info("Footer is loading...");
 
-       let success = addParagraphsToJumbotron();
+    // step 1 - Creates the XHR object
+     let XHR = new XMLHttpRequest();
 
-       if(success) 
-       {
-        console.log("successfully added paragraphs to jumbotron");
-       }
-       else
-       {
-        console.warn("content not added to jumbotron - does not exist");
-       }
+    // step 2 - Configures the message
+     XHR.open("GET", "./Views/partials/footer.html");
 
-    } 
+    // step 3 - Executes the request
+    XHR.send();
 
-    window.addEventListener("load", Start);
-})();
+    XHR.addEventListener("readystatechange", function()
+    {
+      if((XHR.readyState === 4) && (XHR.status === 200))
+      {
+          let footer = document.getElementsByTagName("footer")[0];
+
+          let footerData = XHR.responseText;
+          footer.innerHTML = footerData;
+      }
+    });   
+}
  

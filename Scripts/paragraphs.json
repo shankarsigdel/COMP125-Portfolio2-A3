@@ -1,0 +1,34 @@
+{
+    "paragraphs":
+    [
+       {
+           "id":"Title",
+           "content": "BIO PAGE INCLUDING INFORMATIONS"
+       },   
+      {
+          "id":"myInformation",
+          "content": "<p><h4> INTRODUCTION PART WITH PERSONAL INFORMATIONS</h4></p><p> My Name is SHANKAR SIGDEL, Student ID is 301110925, The Course Code is COMP125-004. I Live in Scarborough, Ontario. I am a student of Centennial College, Software Engineering Technology, Second Semester. Software Engineering Technology is my second career of my education. My aim after the completion of this subject is to be established in the same field. I am entertaining this subject and professor as well. Some code references for this project are taken from class lectures of Prof. Tom .IT is really an interesting field to work in. I am expecting to entertain in this field in the future.</p>"
+      },
+      {
+          "id":"missionStatement",
+          "content":"<p><h4> MISSION STATEMENT</p></h4><p>Gain Knowledge on Technology and Work as A Leading Professinal with Sound Knowledge so that i can bring Change and Work with Innovative Ideas of Technology in the Work Place.</p><br><br>"
+      },
+             
+      {
+          "id":"titleProject",
+          "content": "<h1>LIST OF THE THREE PROJECTS</h1>"
+      },
+      {
+          "id":"projectOne",
+          "content": "<h3>This picture shows the pictures of the project that i have completed at Cencol.</h3>"
+      },
+      {
+          "id":"projectTwo",
+          "content": "<h3>This Project is about a Registration Form that i have completed in the guidence of professor at Cencol.</h3>"
+      },
+      {
+          "id":"projectThree",
+          "content": "<h3>This Project is a big project that i have completed as an assignment at Cencol.</h3>"
+      }
+    ]
+  }

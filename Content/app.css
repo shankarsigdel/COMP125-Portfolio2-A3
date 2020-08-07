@@ -1,1 +1,45 @@
 /*CSS File*/
+/*Shankar Sigdel
+Assignment 3 Extended mini Portofolio
+student ID: 301110925
+Client Side Web
+Professor: Tom Tsiliopoulos*/
+td 
+{
+    padding: 10px;
+    border: solid 1px silver;
+}
+/*About the margin*/
+p 
+{
+    margin-right: 150px;
+    margin-left: 80px;
+}
+#projectBody {
+  background-image: url(../Assets/images/bgg.jpg) ;
+  padding: 0;
+  margin:0;
+  height: 100%;
+  
+/* project page settings */
+  background-position: center;
+  background-repeat: repeat;
+  background-size: cover ;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-align: center;
+  text-orientation: upright;
+}
+/* Putting the Picture in center*/
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 15%;
+}
+/* Putting the heading 2 in left*/
+h4 {
+  text-align: center;
+}
+h1 {
+  text-align: center;
+}
