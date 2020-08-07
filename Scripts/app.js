@@ -1,8 +1,10 @@
-/*
+/*javaScript Section
 Shankar Sigdel
-Assignment3
-COMP125 M2020
-*/
+Assignment 3 Extended mini Portofolio
+student ID: 301110925
+Client Side Web
+Professor: Tom Tsiliopoulos*/
+
 "use strict";
 
 displayOutput();
@@ -14,7 +16,7 @@ function displayOutput()
    console.log(`The title of the page is ${title}`);
 }
 
- //This is for nav..header and footer
+ //This is for navigation part that passes -- header and footer
 function setNavData()
 {
  
@@ -24,7 +26,7 @@ if (document.title == "home.html" || document.title == "contact.html" || documen
         loadFooter();      
     }                        
 } 
-     //Header Part
+    //this part loads the heading part of the project
     loadHeader();
     function loadHeader()
     {
@@ -52,7 +54,7 @@ if (document.title == "home.html" || document.title == "contact.html" || documen
     } 
 
 let xhrContent;
-//Reads the content from JSON 
+//This part is to read the content from paragraph.JSON
 function readParagraphs() 
 {
     if ((xhrContent.readyState === 4) && (xhrContent.status === 200)) 
@@ -70,7 +72,7 @@ function readParagraphs()
             }, this);
       }
 }
-//it loads the file from paragraph.json
+//This part also loads the contents fron the paragraph.JSON
 function loadContent()
     {
       xhrContent = new XMLHttpRequest();
@@ -87,7 +89,7 @@ function initialize()
     window.addEventListener("load",initialize);
 
 
-                    //Footer Part
+//This part is to load the footer of every html files
 loadFooter();
 function loadFooter()
 {
